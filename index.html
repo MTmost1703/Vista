@@ -10,23 +10,47 @@
     <!-- Header -->
     <div class="header">
         <div class="logo">
-            <div class="burger-menu" id="burger-menu">
+            <div class="burger-menu" id="burger-menu" style="display: none;">
                 <div></div>
                 <div></div>
                 <div></div>
             </div>
             MJC Portal V.2
         </div>
-        <div class="nav-buttons">
+        <div class="nav-buttons" id="nav-buttons" style="display: none;">
             <a href="#" class="nav-button">ADMIN</a>
             <span style="color:white; margin: 0 5px; display: inline-block; vertical-align: middle;">|</span>
-            <a href="#" class="logout-btn">Logout</a>
+            <a href="#" class="logout-btn" id="logout-btn">Logout</a>
         </div>
     </div>
-    <!-- Main Container -->
-    <div class="container">
+
+    <!-- Login Popup -->
+    <div id="login-popup" class="login-popup">
+        <div class="login-card">
+            <div class="popup-close" id="popup-close">&times;</div>
+            <div class="background-image"></div>
+            <div class="login-form">
+                <h2>LOG-IN</h2>
+                <div class="form-group">
+                    <label for="username">User Name</label>
+                    <input type="text" id="username" name="username" placeholder="User Name">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="login-btn" id="login-btn">Login</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Overlay for popup -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard" class="container">
         <!-- Sidebar -->
-        <div class="sidebar" id="sidebar">
+        <div class="sidebar" id="sidebar" style="display: none;">
             <!-- Master Menu -->
             <div class="menu-item" data-menu="master">
                 <span>Master</span>
@@ -37,12 +61,12 @@
                 <div class="submenu-item">Branch Inter</div>
                 <div class="submenu-item">Movie</div>
                 <div class="submenu-item">Branch Manager</div>
-                <div class="submenu-item">Branch Film/Hire</div>
-                <div class="submenu-item">Distributor Film/Hire</div>
+                <div class="submenu-item">Branch FilmHire</div>
+                <div class="submenu-item">Distributor FilmHire</div>
                 <div class="submenu-item">Tier Branch</div>
                 <div class="submenu-item">Tier Item</div>
             </div>
-            
+           
             <!-- Account Menu -->
             <div class="menu-item" data-menu="account">
                 <span>Account</span>
@@ -62,7 +86,7 @@
                 <div class="submenu-item">Film Hire Report</div>
                 <div class="submenu-item">Complimentary Upgrade Report</div>
             </div>
-            
+           
             <!-- Operation Menu -->
             <div class="menu-item" data-menu="operation">
                 <span>Operation</span>
@@ -81,7 +105,7 @@
                 <div class="submenu-item">Concession Report</div>
                 <div class="submenu-item">Payment Report</div>
             </div>
-            
+           
             <!-- Embassy Menu -->
             <div class="menu-item" data-menu="embassy">
                 <span>Embassy</span>
@@ -92,10 +116,10 @@
                 <div class="submenu-item">Real Time</div>
                 <div class="submenu-item">Price Card</div>
             </div>
-            
+           
             <!-- IT Menu -->
             <div class="menu-item" data-menu="it">
-                <span>IT</span>
+                <span>IT (App)</span>
                 <span class="menu-arrow"></span>
             </div>
             <div class="submenu" id="it-submenu">
@@ -104,7 +128,7 @@
                 <div class="submenu-item">Branch Custom View</div>
                 <div class="submenu-item">CPC Manage Account</div>
             </div>
-            
+           
             <!-- BOT Menu -->
             <div class="menu-item" data-menu="bot">
                 <span>BOT</span>
@@ -122,7 +146,7 @@
                 <div class="submenu-item">E-Money</div>
                 <div class="submenu-item">E-Money by Value</div>
             </div>
-            
+           
             <!-- MCash Menu -->
             <div class="menu-item" data-menu="mcash">
                 <span>MCash</span>
@@ -140,7 +164,7 @@
                 <div class="submenu-item">Clear Recog</div>
                 <div class="submenu-item">Members Transaction Report</div>
             </div>
-            
+           
             <!-- MPass MGem Menu -->
             <div class="menu-item" data-menu="mpass">
                 <span>MPass MGem</span>
@@ -156,7 +180,7 @@
                 <div class="submenu-item">Loyalty Offline</div>
                 <div class="submenu-item">Promo Recurring</div>
             </div>
-            
+           
             <!-- MGem Summary (Thai) Menu -->
             <div class="menu-item" data-menu="mgem-thai">
                 <span>MGem Summary (Thai)</span>
@@ -167,7 +191,7 @@
                 <div class="submenu-item">Point by Branch</div>
                 <div class="submenu-item">Point by Club</div>
             </div>
-            
+           
             <!-- MGem Summary (Inter) Menu -->
             <div class="menu-item" data-menu="mgem-inter">
                 <span>MGem Summary (Inter)</span>
@@ -178,7 +202,7 @@
                 <div class="submenu-item">Point by Branch (Inter)</div>
                 <div class="submenu-item">Point by Club (Inter)</div>
             </div>
-            
+           
             <!-- MGem Card Fee (Thai) Menu -->
             <div class="menu-item" data-menu="card-fee-thai">
                 <span>MGem Card Fee (Thai)</span>
@@ -193,7 +217,7 @@
                 <div class="submenu-item">Summary</div>
                 <div class="submenu-item">Transaction Summary</div>
             </div>
-            
+           
             <!-- MGem Card Fee (Inter) Menu -->
             <div class="menu-item" data-menu="card-fee-inter">
                 <span>MGem Card Fee (Inter)</span>
@@ -208,7 +232,7 @@
                 <div class="submenu-item">Summary</div>
                 <div class="submenu-item">Transaction Summary</div>
             </div>
-            
+           
             <!-- Bowling Menu -->
             <div class="menu-item" data-menu="bowling">
                 <span>Bowling</span>
@@ -225,7 +249,7 @@
                 <div class="submenu-item">Bowling NonSale Report</div>
                 <div class="submenu-item">Bowling Package Report</div>
             </div>
-            
+           
             <!-- PSC Menu -->
             <div class="menu-item" data-menu="psc">
                 <span>PSC</span>
@@ -234,7 +258,7 @@
             <div class="submenu" id="psc-submenu">
                 <div class="submenu-item">Blacklist View</div>
             </div>
-            
+           
             <!-- Admin Permission Menu -->
             <div class="menu-item" data-menu="admin">
                 <span>Admin Permission</span>
@@ -248,13 +272,19 @@
                 <div class="submenu-item">Permission Menu Detail</div>
             </div>
         </div>
-        
+       
         <!-- Content Area -->
-        <div class="content">
-            <!-- Content will be displayed here -->
+        <div class="content" id="content">
+            <!-- Default page content -->
+            <div class="welcome-content">
+                <h2>Welcome to MJC Portal V.2</h2>
+                <div class="content-box">
+                    <p>Please login to access the portal features.</p>
+                </div>
+            </div>
         </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
