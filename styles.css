@@ -1,6 +1,4 @@
-/* ================ ปรับปรุง CSS ให้เป็น Responsive ================ */
-
-/* Reset และ Base Styles */
+/* ================ Base Styles ================ */
 * {
     margin: 0;
     padding: 0;
@@ -41,6 +39,24 @@ body {
     font-weight: bold;
 }
 
+.logo-image {
+    height: 32px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.login-link {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
 .nav-buttons {
     display: flex;
     align-items: center;
@@ -74,6 +90,19 @@ body {
     background-color: white;
     margin: 5px 0;
     transition: all 0.3s;
+}
+
+/* Burger menu active state */
+.burger-menu.active div:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-menu.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* ================ Main Container ================ */
@@ -258,7 +287,7 @@ body {
     backdrop-filter: blur(2px);
 }
 
-/* ================ Login Popup ================ */
+/* ================ Login Popup - Updated ================ */
 .login-popup {
     position: fixed;
     top: 50%;
@@ -269,15 +298,17 @@ body {
     animation: fadeIn 0.3s;
     width: 90%;
     max-width: 400px;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .login-card {
     width: 100%;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    border-radius: 10px;
 }
 
 .popup-close {
@@ -302,10 +333,18 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* Updated background image */
+.background-image {
+    height: 180px;
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 .login-form {
     width: 100%;
     padding: 30px 20px;
-    background: linear-gradient(to bottom, #0079b2, #00a7e1);
+    background: linear-gradient(to bottom, #016c9b, #00a2e8);
 }
 
 .login-form h2 {
@@ -329,33 +368,45 @@ body {
     font-size: 16px;
 }
 
-.form-group input {
+/* Updated modern input style */
+.modern-input {
     width: 100%;
-    padding: 10px;
-    background-color: white;
+    padding: 10px 2px;
+    background-color: transparent;
     border: none;
-    border-radius: 4px;
-    color: #333;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+    color: white;
     font-size: 15px;
     outline: none;
+    transition: border-color 0.3s;
 }
 
+.modern-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.modern-input:focus {
+    border-bottom: 1px solid white;
+}
+
+/* Updated login button */
 .login-btn {
     display: block;
     width: 150px;
     padding: 10px;
     margin: 30px auto 0;
-    background-color: #2c3e50;
+    background-color: #1c2b36;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-align: center;
 }
 
 .login-btn:hover {
-    background-color: #1a2b37;
+    background-color: #2c3e50;
 }
 
 /* Login message */
@@ -367,19 +418,6 @@ body {
     background-color: rgba(0, 0, 0, 0.3);
     padding: 8px;
     border-radius: 4px;
-    animation: fadeIn 0.5s;
-}
-
-/* Error message */
-.error-message {
-    color: #ffcccc;
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-    background-color: rgba(255, 0, 0, 0.2);
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 0, 0, 0.3);
     animation: fadeIn 0.5s;
 }
 
@@ -415,7 +453,6 @@ body {
 }
 
 /* ================ RESPONSIVE DESIGN ================ */
-
 /* Large Screens */
 @media (min-width: 1200px) {
     .sidebar {
@@ -474,18 +511,6 @@ body {
         flex-direction: column;
     }
     
-    .burger-menu.active div:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-    
-    .burger-menu.active div:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .burger-menu.active div:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-    }
-    
     .content {
         padding: 15px;
     }
@@ -517,9 +542,9 @@ body {
         font-size: 14px;
     }
     
-    .form-group input {
+    .modern-input {
         font-size: 14px;
-        padding: 8px;
+        padding: 8px 2px;
     }
     
     .login-btn {
@@ -607,22 +632,15 @@ body {
     }
 }
 
-/* Dynamic Height Adjustment */
-@media (max-height: 600px) {
-    .login-popup {
-        max-height: 90vh;
-        overflow-y: auto;
-    }
-    
-    .login-form {
-        padding: 15px;
-    }
-    
-    .form-group {
-        margin-bottom: 10px;
-    }
-    
-    .login-btn {
-        margin-top: 15px;
-    }
+/* Error message */
+.error-message {
+    color: #ffcccc;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    background-color: rgba(255, 0, 0, 0.2);
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    animation: fadeIn 0.5s;
 }
