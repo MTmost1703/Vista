@@ -15,29 +15,33 @@
                 <div></div>
                 <div></div>
             </div>
-            MJC Portal V.2
+            <img src="images/major.png" alt="MJC Logo" class="logo-image">
+            <span class="logo-text">MJC Portal V.2</span>
         </div>
         <div class="nav-buttons" id="nav-buttons" style="display: none;">
             <a href="#" class="nav-button">ADMIN</a>
-            <span style="color:white; margin: 0 5px; display: inline-block; vertical-align: middle;">|</span>
+            <span style="color:rgb(255, 255, 255); margin: 0 5px; display: inline-block; vertical-align: middle;">|</span>
             <a href="#" class="logout-btn" id="logout-btn">Logout</a>
         </div>
+        <a href="#" class="login-link" id="login-link">Login</a>
     </div>
 
     <!-- Login Popup -->
     <div id="login-popup" class="login-popup">
         <div class="login-card">
             <div class="popup-close" id="popup-close">&times;</div>
-            <div class="background-image"></div>
+            <div class="background-image">
+                <!-- Background image will be added via CSS -->
+            </div>
             <div class="login-form">
                 <h2>LOG-IN</h2>
                 <div class="form-group">
                     <label for="username">User Name</label>
-                    <input type="text" id="username" name="username" placeholder="User Name">
+                    <input type="text" id="username" name="username" placeholder="User Name" class="modern-input">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password">
+                    <input type="password" id="password" name="password" placeholder="Password" class="modern-input">
                 </div>
                 <button type="submit" class="login-btn" id="login-btn">Login</button>
             </div>
