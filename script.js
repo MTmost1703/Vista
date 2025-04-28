@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dashboard = document.getElementById('dashboard');
     const loginBtn = document.getElementById('login-btn');
     const logoutBtn = document.getElementById('logout-btn');
+    const loginLink = document.getElementById('login-link');
     const navButtons = document.getElementById('nav-buttons');
     const username = document.getElementById('username');
     const password = document.getElementById('password');
@@ -50,6 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
         navButtons.style.display = 'flex';
         burgerMenu.style.display = 'block';
         
+        // Hide login link
+        if (loginLink) {
+            loginLink.style.display = 'none';
+        }
+        
         // Show sidebar
         if (sidebar) {
             sidebar.style.display = 'block';
@@ -92,6 +98,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hide menu and navigation elements
         navButtons.style.display = 'none';
         burgerMenu.style.display = 'none';
+        
+        // Show login link
+        if (loginLink) {
+            loginLink.style.display = 'block';
+        }
+        
         if (sidebar) {
             sidebar.style.display = 'none';
         }
@@ -105,9 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `;
-        
-        // Show login popup with slight delay
-        setTimeout(showLoginPopup, 200);
     }
    
     // Login handler
@@ -243,6 +252,14 @@ document.addEventListener('DOMContentLoaded', function() {
             overlay.addEventListener('click', hideLoginPopup);
         }
         
+        // Show login popup when clicking login link
+        if (loginLink) {
+            loginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showLoginPopup();
+            });
+        }
+        
         // Show Master submenu by default when logged in
         const defaultMenu = document.querySelector('[data-menu="master"]');
         const defaultSubmenu = document.getElementById('master-submenu');
@@ -270,6 +287,11 @@ document.addEventListener('DOMContentLoaded', function() {
             navButtons.style.display = 'flex';
             burgerMenu.style.display = 'block';
             
+            // Hide login link
+            if (loginLink) {
+                loginLink.style.display = 'none';
+            }
+            
             // Show sidebar if admin
             if (isAdmin && sidebar) {
                 sidebar.style.display = 'block';
@@ -294,6 +316,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // User is not logged in, hide menu elements
             navButtons.style.display = 'none';
             burgerMenu.style.display = 'none';
+            
+            // Show login link
+            if (loginLink) {
+                loginLink.style.display = 'block';
+            }
+            
             if (sidebar) {
                 sidebar.style.display = 'none';
             }
@@ -308,21 +336,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
             
-            // Show login popup with slight delay
-            setTimeout(showLoginPopup, 500);
+            // Don't show login popup automatically when page loads
+            // Remove or comment this line if you want popup to show on page load
+            // setTimeout(showLoginPopup, 500);
         }
     }
-   
+    
     // Now that all functions are defined, we can start using them
-   
+    
     // Check if user is already logged in
     checkLoginStatus();
-   
+    
     // Login button click handler
     if (loginBtn) {
         loginBtn.addEventListener('click', handleLogin);
     }
-   
+    
     // Handle Enter key press on login form
     if (loginForm) {
         loginForm.addEventListener('keypress', function(e) {
@@ -331,12 +360,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-   
+    
     // Logout button click handler
     if (logoutBtn) {
         logoutBtn.addEventListener('click', handleLogout);
     }
-   
+    
     // Initialize dashboard functionality
     initializePortal();
 });
