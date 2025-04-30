@@ -6,6 +6,293 @@
     font-family: Arial, sans-serif;
 }
 
+/* ส่วนของ feature cards และ welcome login button ถูกลบออกแล้ว */
+
+/* ================ NEW LOGIN EFFECTS ================ */
+/* 1. ปรับแต่ง Overlay ให้มีเอฟเฟค Blur */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+    display: none;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    animation: fadeOverlay 0.4s ease;
+}
+
+@keyframes fadeOverlay {
+    from { opacity: 0; backdrop-filter: blur(0); }
+    to { opacity: 1; backdrop-filter: blur(5px); }
+}
+
+/* 2. ปรับแต่ง Login Popup */
+.login-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    z-index: 2000;
+    display: none;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    animation: loginPopupAppear 0.5s forwards cubic-bezier(0.26, 0.53, 0.74, 1.48);
+}
+
+.login-card {
+    background-color: white;
+    width: 100%;
+    overflow: hidden;
+}
+
+@keyframes loginPopupAppear {
+    0% { opacity: 0; transform: translate(-50%, -40%) scale(0.8); }
+    80% { opacity: 1; transform: translate(-50%, -52%) scale(1.02); }
+    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* 4. ปรับแต่งภาพพื้นหลัง */
+.background-image {
+    height: 180px;
+    background-image: url('images/Background.jfif');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* 5. ปรับแต่ง Login Form */
+.login-form {
+    width: 100%;
+    padding: 30px 25px;
+    background: white;
+    position: relative;
+}
+
+.login-form h2 {
+    color: #016c9b;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 26px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    border-bottom: none;
+    position: relative;
+}
+
+.login-form h2:after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, #016c9b, #00a2e8);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* 6. ปรับแต่ง Form Group */
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    transform-origin: left;
+}
+
+/* 7. ปรับแต่ง Input */
+.modern-input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    color: #333;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.modern-input::placeholder {
+    color: #aaa;
+}
+
+.modern-input:focus {
+    border-color: #00a2e8;
+    box-shadow: 0 0 0 2px rgba(0, 162, 232, 0.2);
+    background-color: #fff;
+}
+
+/* 8. เพิ่ม Input Icons */
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #aaa;
+    transition: all 0.3s ease;
+}
+
+.input-icon-wrapper .modern-input {
+    padding-left: 45px;
+}
+
+.input-icon-wrapper .modern-input:focus + .input-icon {
+    color: #00a2e8;
+}
+
+/* 9. ปรับแต่งปุ่ม Login */
+.login-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 30px auto 0;
+    background: linear-gradient(45deg, #016c9b, #00a2e8);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 162, 232, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 25px rgba(0, 162, 232, 0.4);
+}
+
+.login-btn:active {
+    transform: translateY(1px);
+}
+
+.login-btn:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0));
+    transition: all 0.6s ease;
+}
+
+.login-btn:hover:before {
+    left: 100%;
+}
+
+/* 10. ปรับแต่ง Error และ Success Message */
+.login-message {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    background-color: rgba(0, 180, 42, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    animation: messageSlideDown 0.5s ease;
+    box-shadow: 0 3px 10px rgba(0, 180, 42, 0.3);
+    position: relative;
+    z-index: 10;
+}
+
+.error-message {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    background-color: rgba(220, 53, 69, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    animation: messageSlideDown 0.5s ease;
+    box-shadow: 0 3px 10px rgba(220, 53, 69, 0.3);
+    position: relative;
+    z-index: 10;
+}
+
+@keyframes messageSlideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 11. เพิ่มเอฟเฟคพื้นหลังใหม่สำหรับ Login */
+.login-background-effect {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 162, 232, 0.2), rgba(1, 108, 155, 0.2));
+    filter: blur(30px);
+    z-index: -1;
+    animation: pulseEffect 15s infinite alternate;
+}
+
+.login-background-effect:nth-child(2) {
+    top: auto;
+    right: auto;
+    bottom: -80px;
+    left: -60px;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(135deg, rgba(0, 162, 232, 0.15), rgba(0, 108, 155, 0.15));
+    animation-delay: 2s;
+}
+
+@keyframes pulseEffect {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+
+/* Toggle password button */
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+    color: #00a2e8;
+}
+
+/* Loading animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 body {
     background-color: #fff;
     min-height: 100vh;
@@ -21,9 +308,9 @@ body {
     background-color: #000;
     color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    padding: 10px 15px;
+    padding: 10px 8px;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -37,11 +324,12 @@ body {
     align-items: center;
     font-size: 18px;
     font-weight: bold;
+    gap: 2px;
 }
 
 .logo-image {
     height: 32px;
-    margin-right: 10px;
+    margin-right: 3px;
 }
 
 .logo-text {
@@ -51,6 +339,7 @@ body {
 }
 
 .login-link {
+    margin-left: auto;
     color: white;
     text-decoration: none;
     font-size: 14px;
@@ -58,6 +347,7 @@ body {
 }
 
 .nav-buttons {
+    margin-left: auto;
     display: flex;
     align-items: center;
 }
@@ -81,7 +371,7 @@ body {
 .burger-menu {
     display: none;
     cursor: pointer;
-    margin-right: 15px;
+    margin-right: 5px;
 }
 
 .burger-menu div {
@@ -201,6 +491,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    cursor: pointer;
 }
 
 .submenu-item:before {
@@ -274,184 +565,6 @@ body {
     color: #666;
 }
 
-/* ================ Overlay for popup ================ */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1500;
-    display: none;
-    backdrop-filter: blur(2px);
-}
-
-/* ================ Login Popup - Updated ================ */
-.login-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2000;
-    display: none;
-    animation: fadeIn 0.3s;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.login-card {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    background-color: #fff;
-    border-radius: 10px;
-}
-
-.popup-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 10;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    transition: background-color 0.2s;
-}
-
-.popup-close:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-/* Updated background image */
-.background-image {
-    height: 180px;
-    background-image: url('images/background.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-.login-form {
-    width: 100%;
-    padding: 30px 20px;
-    background: linear-gradient(to bottom, #016c9b, #00a2e8);
-}
-
-.login-form h2 {
-    color: white;
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 24px;
-    letter-spacing: 1px;
-    font-weight: bold;
-    border-bottom: none;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    color: white;
-    margin-bottom: 5px;
-    font-size: 16px;
-}
-
-/* Updated modern input style */
-.modern-input {
-    width: 100%;
-    padding: 10px 2px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-    color: white;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.modern-input::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.modern-input:focus {
-    border-bottom: 1px solid white;
-}
-
-/* Updated login button */
-.login-btn {
-    display: block;
-    width: 150px;
-    padding: 10px;
-    margin: 30px auto 0;
-    background-color: #1c2b36;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-align: center;
-}
-
-.login-btn:hover {
-    background-color: #2c3e50;
-}
-
-/* Login message */
-.login-message {
-    color: white;
-    text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 8px;
-    border-radius: 4px;
-    animation: fadeIn 0.5s;
-}
-
-.welcome-content {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.welcome-content h2 {
-    font-size: 28px;
-    color: #016c9b;
-    border-bottom: none;
-    margin-bottom: 30px;
-}
-
-.welcome-content .content-box {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes scaleUp {
-    from { transform: translate(-50%, -50%) scale(0.8); }
-    to { transform: translate(-50%, -50%) scale(1); }
-}
-
 /* ================ RESPONSIVE DESIGN ================ */
 /* Large Screens */
 @media (min-width: 1200px) {
@@ -470,12 +583,17 @@ body {
     .content {
         padding: 30px;
     }
+    
+    /* ซ่อนเมนูแฮมเบอร์เกอร์บนจอขนาดใหญ่ */
+    .burger-menu {
+        display: none !important;
+    }
 }
 
 /* Medium Screens */
-@media (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 1199px) {
     .sidebar {
-        width: 200px;
+        width: 220px;
     }
     
     .content {
@@ -485,12 +603,17 @@ body {
     .content h2 {
         font-size: 16px;
     }
+    
+    /* ซ่อนเมนูแฮมเบอร์เกอร์บนจอขนาดกลาง */
+    .burger-menu {
+        display: none !important;
+    }
 }
 
-/* Small Tablets */
+/* Small Tablets and Mobile */
 @media (max-width: 768px) {
     .burger-menu {
-        display: block;
+        display: block; /* แสดงเมนูบนอุปกรณ์ขนาดเล็ก */
     }
     
     .sidebar {
@@ -632,15 +755,149 @@ body {
     }
 }
 
-/* Error message */
-.error-message {
-    color: #ffcccc;
+/* ================ WELCOME PAGE EFFECTS ================ */
+/* 1. ปรับแต่งพื้นหลังของหน้าแรก */
+.welcome-content {
     text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-    background-color: rgba(255, 0, 0, 0.2);
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid rgba(255, 0, 0, 0.3);
-    animation: fadeIn 0.5s;
+    padding: 40px 20px;
+    background-image: linear-gradient(120deg, #f6f8f9 0%, #e9f2f7 100%);
+    animation: fadeInPage 1s ease;
 }
+
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 2. ปรับแต่งหัวข้อให้มีเอฟเฟคการเคลื่อนไหว */
+.welcome-content h2 {
+    font-size: 32px;
+    color: #016c9b;
+    border-bottom: none;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+    animation: fadeInTitle 1.2s ease;
+}
+
+.welcome-content h2:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -10px;
+    left: 50%;
+    background: linear-gradient(90deg, #016c9b, #00a2e8);
+    transform: translateX(-50%);
+    animation: lineExpand 1.5s forwards ease-out 0.5s;
+}
+
+@keyframes fadeInTitle {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lineExpand {
+    from { width: 0; }
+    to { width: 80%; }
+}
+
+/* 3. ปรับแต่ง content-box ให้มีเอฟเฟค */
+.welcome-content .content-box {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    animation: floatUp 1s forwards ease-out 0.7s;
+    border-top: 4px solid #00a2e8;
+}
+
+@keyframes floatUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ================ Data Table Styles ================ */
+.table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.search-container {
+    display: flex;
+    width: 250px;
+    position: relative;
+}
+/* CSS ทั้งหมดสำหรับตารางจากไฟล์ test.css */
+/* ... */
+
+/* เพิ่มสถานะสีในตาราง */
+.status-active {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.status-inactive {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* ปรับปรุง loading indicator */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    color: #666;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* เพิ่มการแสดงจำนวนผลลัพธ์ */
+.result-count {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.data-table th, .data-table td {
+    border: solid 1px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+  }
+
+  th, td {
+    border: 1px solid #999;
+    padding: 8px 10px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #d9e1f2;
+    font-weight: bold;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #ddeeff;
+  }
