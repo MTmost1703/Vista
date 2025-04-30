@@ -15,7 +15,7 @@
                 <div></div>
                 <div></div>
             </div>
-            <img src="images/major.png" alt="MJC Logo" class="logo-image">
+            <img src="images/Major_Logo.png" alt="MJC Logo" class="logo-image">
             <span class="logo-text">MJC Portal V.2</span>
         </div>
         <div class="nav-buttons" id="nav-buttons" style="display: none;">
@@ -29,22 +29,21 @@
     <!-- Login Popup -->
     <div id="login-popup" class="login-popup">
         <div class="login-card">
-            <div class="popup-close" id="popup-close">&times;</div>
             <div class="background-image">
                 <!-- Background image will be added via CSS -->
             </div>
-            <div class="login-form">
-                <h2>LOG-IN</h2>
+            <form class="login-form" onsubmit="return false;">
+                <h2></h2>
                 <div class="form-group">
                     <label for="username">User Name</label>
-                    <input type="text" id="username" name="username" placeholder="User Name" class="modern-input">
+                    <input type="text" id="username" name="username" placeholder="User Name" class="modern-input" autocomplete="username">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password" class="modern-input">
+                    <input type="password" id="password" name="password" placeholder="Password" class="modern-input" autocomplete="current-password">
                 </div>
                 <button type="submit" class="login-btn" id="login-btn">Login</button>
-            </div>
+            </form>
         </div>
     </div>
     
@@ -161,9 +160,9 @@
                 <div class="submenu-item">Encrypted-PIN</div>
             </div>
            
-            <!-- MPass MGem Menu -->
+            <!-- MPass MGen Menu -->
             <div class="menu-item" data-menu="mpass">
-                <span>MPass MGem</span>
+                <span>MPass MGen</span>
                 <span class="menu-arrow"></span>
             </div>
             <div class="submenu" id="mpass-submenu">
@@ -179,34 +178,34 @@
                 <div class="submenu-item">Members Transaction Report</div>
             </div>
            
-            <!-- MGem Summary (Thai) Menu -->
-            <div class="menu-item" data-menu="mgem-thai">
-                <span>MGem Summary (Thai)</span>
+            <!-- MGen Summary (Thai) Menu -->
+            <div class="menu-item" data-menu="mgen-thai">
+                <span>MGen Summary (Thai)</span>
                 <span class="menu-arrow"></span>
             </div>
-            <div class="submenu" id="mgem-thai-submenu">
+            <div class="submenu" id="mgen-thai-submenu">
                 <div class="submenu-item">Expiry Point by Club</div>
                 <div class="submenu-item">Point by Branch</div>
                 <div class="submenu-item">Point by Club</div>
             </div>
            
-            <!-- MGem Summary (Inter) Menu -->
-            <div class="menu-item" data-menu="mgem-inter">
-                <span>MGem Summary (Inter)</span>
+            <!-- MGen Summary (Inter) Menu -->
+            <div class="menu-item" data-menu="mgen-inter">
+                <span>MGen Summary (Inter)</span>
                 <span class="menu-arrow"></span>
             </div>
-            <div class="submenu" id="mgem-inter-submenu">
+            <div class="submenu" id="mgen-inter-submenu">
                 <div class="submenu-item">Expiry Point by Club (Inter)</div>
                 <div class="submenu-item">Point by Branch (Inter)</div>
                 <div class="submenu-item">Point by Club (Inter)</div>
             </div>
            
-            <!-- MGem Card Fee (Thai) Menu -->
-            <div class="menu-item" data-menu="MGem Card Fee (Thai)">
-                <span>MGem Card Fee (Thai)</span>
+            <!-- MGen Card Fee (Thai) Menu -->
+            <div class="menu-item" data-menu="mgen-card-fee-thai">
+                <span>MGen Card Fee (Thai)</span>
                 <span class="menu-arrow"></span>
             </div>
-            <div class="submenu" id="MGem Card Fee (Thai)-submenu">
+            <div class="submenu" id="mgen-card-fee-thai-submenu">
                 <div class="submenu-item">MKT Type</div>
                 <div class="submenu-item">Club</div>
                 <div class="submenu-item">Member Type</div>
@@ -216,12 +215,12 @@
                 <div class="submenu-item">Transaction Summary</div>
             </div>
            
-            <!-- MGem Card Fee (Inter) Menu -->
-            <div class="menu-item" data-menu="MGem Card Fee (Inter)">
-                <span>MGem Card Fee (Inter)</span>
+            <!-- MGen Card Fee (Inter) Menu -->
+            <div class="menu-item" data-menu="mgen-card-fee-inter">
+                <span>MGen Card Fee (Inter)</span>
                 <span class="menu-arrow"></span>
             </div>
-            <div class="submenu" id="MGem Card Fee (Inter)-submenu">
+            <div class="submenu" id="mgen-card-fee-inter-submenu">
                 <div class="submenu-item">MKT Type</div>
                 <div class="submenu-item">Club</div>
                 <div class="submenu-item">Member Type</div>
@@ -262,11 +261,11 @@
             </div>
            
             <!-- Admin Permission Menu -->
-            <div class="menu-item" data-menu="Admin Permission">
+            <div class="menu-item" data-menu="admin permission">
                 <span>Admin Permission</span>
                 <span class="menu-arrow"></span>
             </div>
-            <div class="submenu" id="Admin Permission-submenu">
+            <div class="submenu" id="admin permission-submenu">
                 <div class="submenu-item">Permission User</div>
                 <div class="submenu-item">Permission Group User</div>
                 <div class="submenu-item">Permission Group Menu</div>
@@ -286,6 +285,19 @@
             </div>
         </div>
     </div>
+
+
+    
+    <!-- เพิ่มเมนู Test หลังเมนู Master -->
+<div class="menu-item" data-menu="test">
+    <span>Test</span>
+    <span class="menu-arrow"></span>
+</div>
+<div class="submenu" id="test-submenu">
+    <div class="submenu-item">Branch Data</div>
+</div>
+
+
 
     <script src="script.js"></script>
 </body>
