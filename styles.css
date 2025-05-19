@@ -6,291 +6,8 @@
     font-family: Arial, sans-serif;
 }
 
-/* ส่วนของ feature cards และ welcome login button ถูกลบออกแล้ว */
-
-/* ================ NEW LOGIN EFFECTS ================ */
-/* 1. ปรับแต่ง Overlay ให้มีเอฟเฟค Blur */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1500;
-    display: none;
-    backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
-    animation: fadeOverlay 0.4s ease;
-}
-
-@keyframes fadeOverlay {
-    from { opacity: 0; backdrop-filter: blur(0); }
-    to { opacity: 1; backdrop-filter: blur(5px); }
-}
-
-/* 2. ปรับแต่ง Login Popup */
-.login-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.9);
-    z-index: 2000;
-    display: none;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    animation: loginPopupAppear 0.5s forwards cubic-bezier(0.26, 0.53, 0.74, 1.48);
-}
-
-.login-card {
-    background-color: white;
-    width: 100%;
-    overflow: hidden;
-}
-
-@keyframes loginPopupAppear {
-    0% { opacity: 0; transform: translate(-50%, -40%) scale(0.8); }
-    80% { opacity: 1; transform: translate(-50%, -52%) scale(1.02); }
-    100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-}
-
-/* 4. ปรับแต่งภาพพื้นหลัง */
-.background-image {
-    height: 180px;
-    background-image: url('images/Background.jfif');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    overflow: hidden;
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
-/* 5. ปรับแต่ง Login Form */
-.login-form {
-    width: 100%;
-    padding: 30px 25px;
-    background: white;
-    position: relative;
-}
-
-.login-form h2 {
-    color: #016c9b;
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 26px;
-    letter-spacing: 1px;
-    font-weight: bold;
-    border-bottom: none;
-    position: relative;
-}
-
-.login-form h2:after {
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 3px;
-    background: linear-gradient(to right, #016c9b, #00a2e8);
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 2px;
-}
-
-/* 6. ปรับแต่ง Form Group */
-.form-group {
-    margin-bottom: 25px;
-    position: relative;
-}
-
-.form-group label {
-    display: block;
-    color: #333;
-    margin-bottom: 8px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    transform-origin: left;
-}
-
-/* 7. ปรับแต่ง Input */
-.modern-input {
-    width: 100%;
-    padding: 12px 15px;
-    background-color: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    color: #333;
-    font-size: 15px;
-    outline: none;
-    transition: all 0.3s ease;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.modern-input::placeholder {
-    color: #aaa;
-}
-
-.modern-input:focus {
-    border-color: #00a2e8;
-    box-shadow: 0 0 0 2px rgba(0, 162, 232, 0.2);
-    background-color: #fff;
-}
-
-/* 8. เพิ่ม Input Icons */
-.input-icon-wrapper {
-    position: relative;
-}
-
-.input-icon {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: #aaa;
-    transition: all 0.3s ease;
-}
-
-.input-icon-wrapper .modern-input {
-    padding-left: 45px;
-}
-
-.input-icon-wrapper .modern-input:focus + .input-icon {
-    color: #00a2e8;
-}
-
-/* 9. ปรับแต่งปุ่ม Login */
-.login-btn {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    margin: 30px auto 0;
-    background: linear-gradient(45deg, #016c9b, #00a2e8);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 162, 232, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-.login-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 7px 25px rgba(0, 162, 232, 0.4);
-}
-
-.login-btn:active {
-    transform: translateY(1px);
-}
-
-.login-btn:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.2), rgba(255,255,255,0));
-    transition: all 0.6s ease;
-}
-
-.login-btn:hover:before {
-    left: 100%;
-}
-
-/* 10. ปรับแต่ง Error และ Success Message */
-.login-message {
-    color: white;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    background-color: rgba(0, 180, 42, 0.9);
-    padding: 10px;
-    border-radius: 8px;
-    animation: messageSlideDown 0.5s ease;
-    box-shadow: 0 3px 10px rgba(0, 180, 42, 0.3);
-    position: relative;
-    z-index: 10;
-}
-
-.error-message {
-    color: white;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    background-color: rgba(220, 53, 69, 0.9);
-    padding: 10px;
-    border-radius: 8px;
-    animation: messageSlideDown 0.5s ease;
-    box-shadow: 0 3px 10px rgba(220, 53, 69, 0.3);
-    position: relative;
-    z-index: 10;
-}
-
-@keyframes messageSlideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* 11. เพิ่มเอฟเฟคพื้นหลังใหม่สำหรับ Login */
-.login-background-effect {
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(0, 162, 232, 0.2), rgba(1, 108, 155, 0.2));
-    filter: blur(30px);
-    z-index: -1;
-    animation: pulseEffect 15s infinite alternate;
-}
-
-.login-background-effect:nth-child(2) {
-    top: auto;
-    right: auto;
-    bottom: -80px;
-    left: -60px;
-    width: 250px;
-    height: 250px;
-    background: linear-gradient(135deg, rgba(0, 162, 232, 0.15), rgba(0, 108, 155, 0.15));
-    animation-delay: 2s;
-}
-
-@keyframes pulseEffect {
-    0% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.2); opacity: 0.5; }
-    100% { transform: scale(1); opacity: 0.7; }
-}
-
-/* Toggle password button */
-.toggle-password {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #aaa;
-    transition: color 0.3s ease;
-}
-
-.toggle-password:hover {
-    color: #00a2e8;
-}
-
-/* Loading animation */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -301,6 +18,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent; /* ป้องกันการแสดง highlight เมื่อแตะบนมือถือ */
 }
 
 /* ================ Header Styles ================ */
@@ -308,15 +26,26 @@ body {
     background-color: #000;
     color: white;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 8px;
+    padding: 10px 15px;
     position: sticky;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
     margin: 0;
-    height: 50px;
+    min-height: 50px;
     width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* New container for left side elements */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Reduced gap to bring logo closer to burger menu */
 }
 
 .logo {
@@ -324,75 +53,143 @@ body {
     align-items: center;
     font-size: 18px;
     font-weight: bold;
-    gap: 2px;
+    gap: 5px; /* Reduced from 8px to 5px */
+    flex-shrink: 0;
 }
 
 .logo-image {
     height: 32px;
-    margin-right: 3px;
+    margin-right: 0;
+    margin-left: 0;
+    transition: transform 0.3s ease;
 }
 
 .logo-text {
     font-size: 18px;
     font-weight: bold;
     color: white;
-}
-
-.login-link {
-    margin-left: auto;
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .nav-buttons {
-    margin-left: auto;
     display: flex;
     align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
 }
 
 .nav-button, .logout-btn {
     color: white;
     text-decoration: none;
-    margin-left: 5px;
     font-size: 14px;
-    padding: 0;
-    display: inline-block;
-    vertical-align: middle;
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-button:hover, .logout-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-button:active, .logout-btn:active {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(1px);
+}
+
+/* ปรับแต่งชื่อผู้ใช้ */
+#username-display {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    overflow: visible;
+    white-space: nowrap;
+    display: block;
+    padding: 5px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#username-display:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .logout-btn {
     color: #3a9fe5;
     cursor: pointer;
+    font-weight: bold;
 }
 
 /* ================ Burger Menu Icon ================ */
 .burger-menu {
-    display: none;
     cursor: pointer;
-    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    margin-right: 0; /* No margin to keep it close to logo */
+    padding: 0;
 }
 
-.burger-menu div {
-    width: 25px;
-    height: 3px;
+.burger-menu:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.burger-menu:active {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(0.95);
+}
+
+.burger-line {
+    display: block;
+    width: 18px; /* ปรับขนาดให้เหมาะสม */
+    height: 2px;
     background-color: white;
-    margin: 5px 0;
-    transition: all 0.3s;
+    margin: 2px 0; /* ลดระยะห่างระหว่างเส้น */
+    transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6), 
+                opacity 0.3s ease,
+                background-color 0.3s ease;
+    border-radius: 2px;
 }
 
-/* Burger menu active state */
-.burger-menu.active div:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+/* สถานะ active สำหรับ burger menu เพื่อแสดง X */
+.burger-menu.active .burger-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg); /* ปรับค่าให้เหมาะสมกับขนาดใหม่ */
+    background-color: #00a2e8;
 }
 
-.burger-menu.active div:nth-child(2) {
+.burger-menu.active .burger-line:nth-child(2) {
     opacity: 0;
+    transform: translateX(-10px);
 }
 
-.burger-menu.active div:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+.burger-menu.active .burger-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg); /* ปรับค่าให้เหมาะสมกับขนาดใหม่ */
+    background-color: #00a2e8;
+}
+
+/* Sidebar overlay */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
 }
 
 /* ================ Main Container ================ */
@@ -413,20 +210,42 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     flex-shrink: 0;
-    background-image: linear-gradient(to bottom, #1c1c1c 60%, #00588a, #007bbd, #00a2e8);
+    background-image: linear-gradient(to bottom, #1c1c1c 25%, #61132a, #432467, #3B2869, #371949);
     margin: 0;
     padding: 0;
     height: calc(100vh - 50px);
-    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.3);
-    position: relative;
-    transition: all 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 50px;
+    left: 0;
+    transition: left 0.3s cubic-bezier(0.17, 0.84, 0.44, 1), box-shadow 0.3s ease;
     z-index: 900;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+/* Styling scrollbar for WebKit browsers */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Menu and Submenu Styles */
 .menu-item {
     cursor: pointer;
-    padding: 10px 15px;
+    padding: 12px 15px;
     position: relative;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
@@ -437,21 +256,23 @@ body {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
 }
 
 .menu-item:hover {
     background-color: rgba(0, 162, 232, 0.15);
 }
 
-.menu-item.active {
-    background-color: #016c9b;
-    color: white;
-    font-weight: 600;
-    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+.menu-item:active {
+    background-color: rgba(0, 162, 232, 0.25);
 }
 
-.menu-item.active .menu-arrow {
-    transform: rotate(180deg);
+.menu-item.active {
+    background-color: rgba(0, 162, 232, 0.2);
+    border-left: 3px solid #00a2e8;
+    padding-left: 12px;
 }
 
 .menu-arrow {
@@ -462,36 +283,50 @@ body {
     border-top: 5px solid white;
     margin-left: 5px;
     transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.menu-item.active .menu-arrow {
+    transform: rotate(180deg);
 }
 
 /* Submenu */
 .submenu {
-    display: none;
-    background-color: #222;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.2);
     border-left: 2px solid #016c9b;
-    overflow: visible;
+    width: 100%;
+    min-width: 220px;
+    left: 0;
+    right: 0;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
 }
 
 .submenu.active {
     display: block;
     z-index: 1;
-}
-
-.submenu .submenu {
-    display: none;
+    max-height: 2000px;
+    transition: max-height 0.8s ease-in-out;
+    overflow-y: visible;
 }
 
 .submenu-item {
-    padding: 8px 10px 8px 28px;
+    padding: 12px 10px 12px 28px;
     position: relative;
     margin: 0;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.85);
-    transition: background-color 0.2s;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
 }
 
 .submenu-item:before {
@@ -499,34 +334,42 @@ body {
     position: absolute;
     left: 14px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) scale(1);
     width: 4px;
     height: 4px;
     background-color: rgba(0, 162, 232, 0.6);
     border-radius: 50%;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
 }
 
 .submenu-item:hover {
     background-color: rgba(0, 162, 232, 0.1);
+    color: white;
 }
 
 .submenu-item:hover:before {
     background-color: #00a2e8;
-    width: 5px;
-    height: 5px;
+    transform: translateY(-50%) scale(1.2);
+    box-shadow: 0 0 4px rgba(0, 162, 232, 0.5);
 }
 
+.submenu-item:active {
+    background-color: rgba(0, 162, 232, 0.2);
+    transform: translateX(2px);
+}
+
+/* เพิ่ม style สำหรับ selected state */
 .submenu-item.selected {
     background-color: rgba(0, 162, 232, 0.2);
     color: white;
+    font-weight: bold;
 }
 
 .submenu-item.selected:before {
     background-color: #00a2e8;
-    width: 6px;
-    height: 6px;
-    box-shadow: 0 0 3px rgba(0, 162, 232, 0.5);
+    width: 5px;
+    height: 5px;
+    box-shadow: 0 0 4px rgba(0, 162, 232, 0.5);
 }
 
 /* ================ Content Area ================ */
@@ -535,8 +378,10 @@ body {
     padding: 20px;
     overflow-y: auto;
     background-color: #fff;
-    width: 100%;
+    width: calc(100% - 220px);
     min-height: calc(100vh - 50px);
+    margin-left: 220px;
+    transition: width 0.3s ease, margin-left 0.3s ease;
 }
 
 .content h2 {
@@ -546,23 +391,127 @@ body {
     padding-bottom: 10px;
     font-weight: normal;
     font-size: 18px;
+    animation: fadeIn 0.5s ease;
 }
 
 .content-box {
     background-color: white;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    transition: all 0.3s ease;
+    animation: slideUp 0.4s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.content-box:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
 }
 
 .loading {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
-    font-style: italic;
+    height: 120px;
     color: #666;
+    font-size: 16px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.loading:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    border: 2px solid #ddd;
+    border-top-color: #00a2e8;
+    border-radius: 50%;
+    animation: loading-spinner 0.8s linear infinite;
+}
+
+@keyframes loading-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Touch Feedback */
+.touch-feedback {
+    position: absolute;
+    pointer-events: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 162, 232, 0.3);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    z-index: 9999;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.touch-feedback.active {
+    animation: touch-ripple 0.6s ease-out forwards;
+}
+
+@keyframes touch-ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Sidebar Notification */
+.sidebar-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    z-index: 1100;
+    font-size: 14px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease;
+    border-left: 3px solid #00a2e8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from { 
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* ================ RESPONSIVE DESIGN ================ */
@@ -570,6 +519,13 @@ body {
 @media (min-width: 1200px) {
     .sidebar {
         width: 250px;
+        left: 0 !important;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .content {
+        width: calc(100% - 250px);
+        margin-left: 250px;
     }
     
     .menu-item {
@@ -584,9 +540,14 @@ body {
         padding: 30px;
     }
     
-    /* ซ่อนเมนูแฮมเบอร์เกอร์บนจอขนาดใหญ่ */
+    /* ซ่อน burger menu บนหน้าจอขนาดใหญ่ */
     .burger-menu {
         display: none !important;
+    }
+    
+    /* Adjust header-left spacing */
+    .header-left {
+        gap: 5px;
     }
 }
 
@@ -594,26 +555,38 @@ body {
 @media (min-width: 769px) and (max-width: 1199px) {
     .sidebar {
         width: 220px;
+        left: 0 !important;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
     }
     
     .content {
-        padding: 15px;
+        width: calc(100% - 220px);
+        margin-left: 220px;
+    }
+    
+    .content {
+        padding: 20px;
     }
     
     .content h2 {
         font-size: 16px;
     }
     
-    /* ซ่อนเมนูแฮมเบอร์เกอร์บนจอขนาดกลาง */
+    /* ซ่อน burger menu บนหน้าจอขนาดกลาง */
     .burger-menu {
         display: none !important;
+    }
+    
+    /* Adjust header-left spacing */
+    .header-left {
+        gap: 5px;
     }
 }
 
 /* Small Tablets and Mobile */
 @media (max-width: 768px) {
     .burger-menu {
-        display: block; /* แสดงเมนูบนอุปกรณ์ขนาดเล็ก */
+        display: flex !important; /* แสดง burger menu */
     }
     
     .sidebar {
@@ -622,24 +595,48 @@ body {
         top: 50px;
         bottom: 0;
         width: 250px;
-        transition: left 0.3s ease;
-        z-index: 900;
+        transition: left 0.3s cubic-bezier(0.17, 0.84, 0.44, 1);
+        z-index: 1000;
+        box-shadow: none;
     }
     
     .sidebar.active {
         left: 0;
+        box-shadow: 2px 0 15px rgba(0, 0, 0, 0.4);
+    }
+    
+    .content {
+        width: 100%;
+        margin-left: 0;
+        padding: 15px;
     }
     
     .container {
         flex-direction: column;
     }
     
-    .content {
+    /* ปรับปรุงการแตะบนอุปกรณ์สัมผัส */
+    .menu-item, .submenu-item {
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+    
+    .content-box {
         padding: 15px;
     }
     
-    .login-popup {
-        width: 90%;
+    /* ปรับ nav buttons */
+    .nav-buttons {
+        gap: 5px;
+    }
+    
+    .nav-button, .logout-btn {
+        padding: 5px;
+    }
+    
+    /* Adjust header-left spacing for mobile */
+    .header-left {
+        gap: 3px;
     }
 }
 
@@ -658,63 +655,54 @@ body {
     }
     
     .content-box {
-        padding: 15px;
-    }
-    
-    .form-group label {
-        font-size: 14px;
-    }
-    
-    .modern-input {
-        font-size: 14px;
-        padding: 8px 2px;
-    }
-    
-    .login-btn {
-        width: 100%;
-        font-size: 14px;
-    }
-    
-    .login-form h2 {
-        font-size: 20px;
+        padding: 12px;
     }
     
     .nav-button {
         font-size: 12px;
     }
     
-    .welcome-content h2 {
-        font-size: 22px;
+    /* ซ่อนชื่อผู้ใช้ในหน้าจอขนาดเล็ก */
+    #username-display {
+        display: none;
     }
     
-    .welcome-content .content-box {
-        padding: 15px;
+    .nav-buttons span {
+        display: none;
+    }
+    
+    .logout-btn {
+        margin-left: 0;
+    }
+    
+    /* เพิ่มความชัดเจนในการแตะที่เมนู */
+    .menu-item:active, .submenu-item:active {
+        background-color: rgba(0, 162, 232, 0.3);
+    }
+    
+    /* Even tighter spacing on small devices */
+    .header-left {
+        gap: 2px;
+    }
+    
+    .logo {
+        gap: 3px;
     }
 }
 
 /* Very Small Phones */
 @media (max-width: 360px) {
     .header {
-        height: auto;
+        padding: 8px;
         min-height: 45px;
-        padding: 5px;
     }
     
     .logo {
         font-size: 14px;
     }
     
-    .login-form h2 {
-        font-size: 18px;
-    }
-    
-    .form-group label {
-        font-size: 12px;
-    }
-    
-    .login-message, .error-message {
-        font-size: 12px;
-        padding: 6px;
+    .logo-image {
+        height: 28px;
     }
     
     .menu-item {
@@ -723,181 +711,101 @@ body {
     }
     
     .submenu-item {
-        padding: 6px 10px 6px 25px;
+        padding: 8px 10px 8px 25px;
         font-size: 11px;
+    }
+    
+    .logout-btn {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+    
+    .burger-menu {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .burger-line {
+        width: 18px;
+    }
+    
+    /* Minimal spacing on very small devices */
+    .header-left {
+        gap: 1px;
     }
 }
 
 /* Touch Device Optimization */
 @media (hover: none) {
-    .submenu-item:hover {
+    /* ลบ hover effects สำหรับอุปกรณ์สัมผัส */
+    .submenu-item:hover, .menu-item:hover, .nav-button:hover, .logout-btn:hover {
         background-color: transparent;
     }
     
-    .submenu-item:active {
-        background-color: rgba(0, 162, 232, 0.2);
+    /* เพิ่ม active effects */
+    .submenu-item:active, .menu-item:active {
+        background-color: rgba(0, 162, 232, 0.3);
     }
     
-    .menu-item:hover {
-        background-color: transparent;
+    .nav-button:active, .logout-btn:active {
+        background-color: rgba(255, 255, 255, 0.2);
     }
     
-    .menu-item:active {
-        background-color: rgba(0, 162, 232, 0.2);
+    /* ปรับปรุงการแตะบนอุปกรณ์สัมผัส */
+    .submenu-item {
+        padding: 14px 10px 14px 28px;
     }
     
-    .login-btn:hover {
-        background-color: #2c3e50;
+    /* เพิ่ม feedback สำหรับการแตะ */
+    .menu-item:active, .submenu-item:active, .nav-button:active, .logout-btn:active {
+        transform: scale(0.98);
     }
     
-    .login-btn:active {
-        background-color: #1a2b37;
+    /* ปรับการเลื่อน sidebar */
+    .sidebar {
+        -webkit-overflow-scrolling: touch;
     }
 }
 
-/* ================ WELCOME PAGE EFFECTS ================ */
-/* 1. ปรับแต่งพื้นหลังของหน้าแรก */
-.welcome-content {
-    text-align: center;
-    padding: 40px 20px;
-    background-image: linear-gradient(120deg, #f6f8f9 0%, #e9f2f7 100%);
-    animation: fadeInPage 1s ease;
+/* การเข้าถึงด้วยคีย์บอร์ด */
+.menu-item:focus, .submenu-item:focus, .burger-menu:focus, .nav-button:focus, .logout-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #00a2e8;
 }
 
-@keyframes fadeInPage {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+.menu-item:focus-visible, .submenu-item:focus-visible, .burger-menu:focus-visible, .nav-button:focus-visible, .logout-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #00a2e8, 0 0 0 4px rgba(0, 162, 232, 0.3);
 }
 
-/* 2. ปรับแต่งหัวข้อให้มีเอฟเฟคการเคลื่อนไหว */
-.welcome-content h2 {
-    font-size: 32px;
-    color: #016c9b;
-    border-bottom: none;
-    margin-bottom: 30px;
+/* ปรับปรุงเอฟเฟกต์เมื่อโหลด */
+body.loaded .header,
+body.loaded .sidebar,
+body.loaded .content,
+body.loaded .content-box {
+    animation: fadeIn 0.5s ease;
+}
+
+/* เอฟเฟกต์ transition */
+.wrapper {
     position: relative;
-    display: inline-block;
-    animation: fadeInTitle 1.2s ease;
+    overflow: hidden;
 }
 
-.welcome-content h2:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 3px;
-    bottom: -10px;
-    left: 50%;
-    background: linear-gradient(90deg, #016c9b, #00a2e8);
-    transform: translateX(-50%);
-    animation: lineExpand 1.5s forwards ease-out 0.5s;
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
 }
 
-@keyframes fadeInTitle {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+.page-transition.active {
+    opacity: 1;
+    pointer-events: all;
 }
-
-@keyframes lineExpand {
-    from { width: 0; }
-    to { width: 80%; }
-}
-
-/* 3. ปรับแต่ง content-box ให้มีเอฟเฟค */
-.welcome-content .content-box {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transform: translateY(20px);
-    animation: floatUp 1s forwards ease-out 0.7s;
-    border-top: 4px solid #00a2e8;
-}
-
-@keyframes floatUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-
-/* ================ Data Table Styles ================ */
-.table-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.search-container {
-    display: flex;
-    width: 250px;
-    position: relative;
-}
-/* CSS ทั้งหมดสำหรับตารางจากไฟล์ test.css */
-/* ... */
-
-/* เพิ่มสถานะสีในตาราง */
-.status-active {
-    color: #28a745;
-    font-weight: 600;
-}
-
-.status-inactive {
-    color: #dc3545;
-    font-weight: 600;
-}
-
-/* ปรับปรุง loading indicator */
-.loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    color: #666;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { opacity: 0.6; }
-    50% { opacity: 1; }
-    100% { opacity: 0.6; }
-}
-
-/* เพิ่มการแสดงจำนวนผลลัพธ์ */
-.result-count {
-    color: #666;
-    font-size: 14px;
-    margin-bottom: 10px;
-    text-align: right;
-}
-
-.data-table th, .data-table td {
-    border: solid 1px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
-  }
-
-  th, td {
-    border: 1px solid #999;
-    padding: 8px 10px;
-    text-align: left;
-  }
-
-  th {
-    background-color: #d9e1f2;
-    font-weight: bold;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-
-  tr:hover {
-    background-color: #ddeeff;
-  }
